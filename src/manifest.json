@@ -1,14 +1,14 @@
 {
     "manifest_version": 2,
   
-    "name": "Bookmark All Tabs On Exit",
-    "description": "This extension bookmarks all tabs whenever the browser exits.",
+    "name": "TabMatch",
+    "description": "This extension saves all tabs as bookmarks",
     "version": "0.1",
   
     "browser_action": {
       "default_icon": "icon.png",
       "default_popup": "popup.html",
-      "default_title": "Bookmark All Tabs On Exit"
+      "default_title": "TabMatch"
     },
     "permissions": [
       "activeTab",

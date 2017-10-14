@@ -1,0 +1,18 @@
+{
+  "name": "tabmatch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arudnitsky/TabMatch.git"
+  },
+  "author": "Andy Rudnitsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arudnitsky/TabMatch/issues"
+  },
+  "homepage": "https://github.com/arudnitsky/TabMatch#readme"
+}
