@@ -1,4 +1,4 @@
-const saveLocationParentFolder = 'Other bookmarks';
+const saveLocationParentFolderTitle = 'Other bookmarks';
 const saveLocationFolderTitle = 'TabMatch';
 const notFoundId = -1;
 
@@ -20,13 +20,6 @@ saveTabsToSaveLocation = function(saveLocationId) {
    });
 };
 
-createSaveLocation = function(parentId) {
-   chrome.bookmarks.create({
-      parentId: parentId,
-      title: 'Extension bookmarks'
-   });
-};
-
 findIdForTitle = function(bookmarks, titleToFind) {
    var found = false;
    var idOfTitle = -1;
@@ -34,7 +27,7 @@ findIdForTitle = function(bookmarks, titleToFind) {
    findIdForTitleInternal = function(internalBookmarks, internalTitleToFind) {
       for (var ii = 0; ii < internalBookmarks.length; ++ii) {
          var bookmark = internalBookmarks[ii];
-         if (bookmark.title === internalTitleToFind) {
+         if (bookmark.title.toUpperCase() === internalTitleToFind.toUpperCase()) {
             found = true;
             idOfTitle = bookmark.id;
             break;
@@ -54,17 +47,24 @@ findIdForTitle = function(bookmarks, titleToFind) {
 
 doSaveTabs = function() {
    chrome.bookmarks.getTree(function(bookmarks) {
-      // if has save location saveLocation
-      //     delete it
-      //     recreate it
-      // endif∏
+      var saveLocationParentId = findIdForTitle(bookmarks, saveLocationParentFolderTitle);
+      if (saveLocationParentId === notFoundId) {
+         alert('Can\'t find ', saveLocationFolderTitle);
+         return;
+      }
 
       var saveLocationId = findIdForTitle(bookmarks, saveLocationFolderTitle);
       if (saveLocationId !== notFoundId) {
-         // deleteSaveLocation(saveLocationId);
+         chrome.bookmarks.removeTree(saveLocationId);
       }
-      // createSaveLocation(saveLocationFolderTitle);
-      saveTabsToSaveLocation(saveLocationId);
+
+      chrome.bookmarks.create(
+         {parentId: saveLocationParentId, title: saveLocationFolderTitle},
+         function(results) {
+            saveTabsToSaveLocation(results.id);
+         }
+      );
+      // saveTabsToSaveLocation(saveLocationId);
    });
 };
 
