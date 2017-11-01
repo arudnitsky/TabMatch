@@ -11,10 +11,29 @@
       body {
         margin: 10px;
         white-space: nowrap;
+        min-width: 128px;
       }
 
-      h1 {
-        font-size: 15px;
+      .header {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .header-title {
+        font-size: 16px;
+      }
+
+      hr {
+          display: block;
+          height: 1px;
+          border: 0;
+          border-top: 1px solid #ccc;
+          margin: .5em 0;
+          padding: 0;
+      }
+
+      .header-image {
+        margin: .25em;
       }
 
       #container {
@@ -28,10 +47,13 @@
   </head>
 
   <body>
-    <h1>TabMatch</h1>
+    <div class="header">
+      <div class="header-title">TabMatch</div>
+      <img class="header-image" src="sync16.png" height="16" width="16"/>
+    </div>
+    <hr/>
     <div id="container">
-      <a id="save-tabs">Save Tabs</a>
-      
+      <a id="save-tabs">Save tabs now</a>
     </div>
   </body>
 </html>

@@ -2,11 +2,16 @@
     "manifest_version": 2,
   
     "name": "TabMatch",
-    "description": "Saves all tabs as bookmarks",
+    "description": "Automatically saves all tabs as bookmarks",
     "version": "0.1",
   
+    "icons": {
+      "16": "sync16.png",
+      "48": "sync48.png",
+      "128": "sync128.png"
+    },
     "browser_action": {
-      "default_icon": "icon.png",
+      "default_icon": "sync16.png",
       "default_popup": "popup.html",
       "default_title": "TabMatch"
     },

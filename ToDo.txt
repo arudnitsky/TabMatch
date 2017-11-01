@@ -13,4 +13,3 @@ Update settings:
     "tslint.trace.server": "off",
     "tslint.jsEnable": true
 }
-Fix broken delete and re-save
