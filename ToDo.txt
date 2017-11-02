@@ -1,15 +1,25 @@
-Uninstall -g typescript tslint tslint-eslint-rules
-yarn
-Update settings:
+### Think about it
+- How to keep two browsers from stepping on each other's saved tabs?
+- Split up tabs by window when saving
+- How to onboard new users on initial install to add dest folder, help text?
+- Marketing text for extension page in Chrome Store
+
+
+### Tooling
+- Uninstall -g typescript tslint tslint-eslint-rules
+- How to set up local settings for vscode and use tslint, etc.. per project
+
+### VSCode settings
+Windows:
 {
     "typescript.npm": "c:/program files/nodejs/npm.cmd",
     "editor.minimap.enabled": false,
     "editor.fontSize": 12,
     "editor.tabSize": 3,
     "editor.formatOnPaste": true,
-    "terminal.integrated.fontSize": 12,    
-    "workbench.colorTheme": "Luna",
+    "terminal.integrated.fontSize": 12,
     "workbench.iconTheme": "vscode-great-icons",
     "tslint.trace.server": "off",
-    "tslint.jsEnable": true
+    "tslint.jsEnable": true,
+    "files.autoSave": "afterDelay"
 }
