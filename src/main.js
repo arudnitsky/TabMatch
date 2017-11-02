@@ -1,5 +1,5 @@
 const saveLocationParentFolderTitle = 'Other bookmarks';
-const saveLocationFolderTitle = 'TabMatch';
+const saveLocationFolderTitle = 'TabMatch-Windows';
 const notFoundId = -1;
 
 createBookmark = function(parentId, tab) {
@@ -64,7 +64,6 @@ doSaveTabs = function() {
             saveTabsToSaveLocation(results.id);
          }
       );
-      // saveTabsToSaveLocation(saveLocationId);
    });
 };
 
@@ -72,5 +71,5 @@ doSaveTabs = function() {
 // chrome.alarms.onAlarm.addListener(doSaveTabs);
 
 document.addEventListener('DOMContentLoaded', () => {
-   document.getElementById('container').addEventListener('click', doSaveTabs);
+   document.querySelector('#save-tabs-button').addEventListener('click', doSaveTabs);
 });

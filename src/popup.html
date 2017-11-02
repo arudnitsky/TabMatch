@@ -36,10 +36,14 @@
         margin: .25em;
       }
 
-      #container {
+      #control-container {
         align-items: center;
         display: flex;
         justify-content: space-between;
+      }
+
+      #save-tabs-button {
+        width: 100%;
       }
     </style>
 
@@ -47,13 +51,15 @@
   </head>
 
   <body>
-    <div class="header">
-      <div class="header-title">TabMatch</div>
-      <img class="header-image" src="sync16.png" height="16" width="16"/>
-    </div>
-    <hr/>
-    <div id="container">
-      <a id="save-tabs">Save tabs now</a>
+    <div class="main-container">
+      <div class="header">
+        <div class="header-title">TabMatch</div>
+        <img class="header-image" src="sync16.png" height="16" width="16"/>
+      </div>
+      <hr/>
+      <div id="control-container">
+        <button type="button" id="save-tabs-button">Save tabs now</button>
+      </div>
     </div>
   </body>
 </html>
