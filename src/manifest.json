@@ -15,6 +15,10 @@
       "default_popup": "popup.html",
       "default_title": "TabMatch"
     },
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
     "permissions": [
       "activeTab",
       "storage",
