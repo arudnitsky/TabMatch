@@ -72,5 +72,7 @@ chrome.alarms.onAlarm.addListener(function() {
 });
 
 chrome.runtime.onMessage.addListener(function(msg, sender) {
-   alert(msg.message);
+   if (msg.message === 'saveNow') {
+      doSaveTabs();
+   }
 });
