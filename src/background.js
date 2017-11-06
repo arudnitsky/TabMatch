@@ -1,7 +1,7 @@
 'use strict';
 
 const saveLocationParentFolderTitle = 'Other bookmarks';
-const saveLocationFolderTitle = 'TabMatch-Macbook';
+const saveLocationFolderTitle = 'TabMatch-Windows';
 const notFoundId = -1;
 
 var createBookmark = function(parentId, tab) {
