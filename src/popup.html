@@ -49,7 +49,7 @@
       }
 
       #timer-interval {
-        width: 15px;
+        width: 33px;
       }
 
       .save-location-container {
@@ -67,6 +67,7 @@
       }
     </style>
 
+    <script src="settings.js"></script>
     <script src="main.js"></script>
   </head>
 
@@ -83,7 +84,7 @@
             <label for="enableTimer">Enable timer</label>
           </div>
           <div class="timer-interval-container">
-            <input type="text" id="timer-interval" name="timerInterval" value="5"></input>
+            <input type="number" min="1" max="99" step="1" id="timer-interval" name="timerInterval" value="5"></input>
             <label for="timerInterval">minutes</label>
           </div>
           <div class="save-location-container">

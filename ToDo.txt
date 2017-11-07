@@ -4,7 +4,6 @@
 - How to onboard new users on initial install to add dest folder, help text?
 - Marketing text for extension page in Chrome Store
 
-
 ### Tooling
 - Uninstall -g typescript tslint tslint-eslint-rules
 - How to set up local settings for vscode and use tslint, etc.. per project
@@ -23,3 +22,6 @@ Windows:
     "tslint.jsEnable": true,
     "files.autoSave": "afterDelay"
 }
+
+### Fix 
+Can enter or paste negative numbers in timer interval field
