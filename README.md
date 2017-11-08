@@ -1,3 +1,3 @@
 # TabMatch
 
-This project is under active development and is currently not usable.
+This project is under active development and is currently barely usable.

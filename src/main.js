@@ -5,9 +5,18 @@ var sendSaveNowMessage = function() {
    window.close();
 };
 
+var saveFolderTextBoxChanged = function(event) {
+   settings.setSaveFolder(this.value);
+};
+
+var saveIntervalChanged = function(event) {
+   settings.setSaveIntervalMinutes(this.value);
+};
+
 var enableTimerCheckboxClicked = function() {
    var intervalContainer = document.querySelector('.timer-interval-container');
    if (isEnableTimerCheckboxSelected()) {
+   // if save folder is not set, then flash save folder, set enable timer to false and return
       settings.setEnableTimer(true);
       intervalContainer.style.display = 'inline-block';
       chrome.alarms.create('saveIntervalTimer', {when: Date.now(), periodInMinutes: 5});
@@ -26,46 +35,27 @@ var setEnableTimerCheckbox = function(value) {
    document.querySelector('#enable-timer-checkbox').checked = value;
 };
 
-var saveFolderTextChanged = function(event) {
-   setting.setSaveFolder(this.value);
-};
-
-var getSaveFolderText = function() {
-   return document.querySelector('#save-location').value;
-};
-
-var setSaveFolderText = function(value) {
-   document.querySelector('#save-location').value = value;
-};
-
-var setSaveIntervalTime = function(time) {
-   settings.setSaveIntervalMinutes(time);
-};
-
-var getSaveIntervalTime = function() {
-   return settings.getSaveIntervalMinutes();
-};
-
-var saveIntervalChanged = function(event) {
-   settings.setSaveIntervalMinutes(this.value);
-};
-
-document.addEventListener('DOMContentLoaded', () => {
+var restoreUiFromSavedSettings = function() {
    var saveFolder = settings.getSaveFolder();
-   var saveInterval = settings.getSaveIntervalMinutes();
-   setSaveFolderText(saveFolder);
-   setSaveIntervalTime(saveInterval);
+   var saveIntervalMinutes = settings.getSaveIntervalMinutes();
+   var enableTimer = settings.getEnableTimer();
 
-   if (saveFolder && (saveInterval > 0)) {
-      setSaveIntervalTime(settings.getSaveInterval());
-      setEnableTimerCheckbox(settings.getEnableTimer());
+   document.querySelector('#save-location').value = saveFolder;
+   document.querySelector('#timer-interval').value = saveIntervalMinutes;
+
+   if (saveFolder && (saveIntervalMinutes > 0)) {
+      setEnableTimerCheckbox(enableTimer);
    } else {
       setEnableTimerCheckbox(false);
    }
    enableTimerCheckboxClicked();
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+   restoreUiFromSavedSettings();
 
    document.querySelector('#save-tabs-button').addEventListener('click', sendSaveNowMessage);
    document.querySelector('#enable-timer-checkbox').addEventListener('click', enableTimerCheckboxClicked);
    document.querySelector('#timer-interval').addEventListener('change', saveIntervalChanged);
-   document.querySelector('#save-location').addEventListener('change', saveFolderTextChanged);
+   document.querySelector('#save-location').addEventListener('change', saveFolderTextBoxChanged);
 });

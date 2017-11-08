@@ -6,14 +6,17 @@
 
 ### Tooling
 - [ ] Uninstall -g typescript tslint tslint-eslint-rules
-- [ ] How to set up local settings for vscode and use tslint, etc.. per project
+- [ ] How to set up local settings for vscode and use tslint, etc. per project?
 
 ### Bugs
 - [ ] Can enter or paste negative numbers in timer interval field
+- [ ] The timer is not changed when you change the save interval
 
 ### Next steps
 - [ ] Split up tabs by window
-- [ ] Save and retrieve all settings from local storage
+- [ ] if save folder is not set, then flash save folder, set enable timer to false and return
+- [ ] add "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false to mac settings
+- [x] Save and retrieve all settings from local storage
 
 ### VSCode settings
 Windows:
@@ -27,5 +30,6 @@ Windows:
     "workbench.iconTheme": "vscode-great-icons",
     "tslint.trace.server": "off",
     "tslint.jsEnable": true,
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false
 }
