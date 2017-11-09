@@ -76,3 +76,22 @@ chrome.runtime.onMessage.addListener(function(msg, sender) {
       doSaveTabs();
    }
 });
+
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+   if (changeInfo.status === 'loading') {
+      if (tab.url === undefined) {
+         alert('Tab loading and url is undefined');
+      } else {
+         doSaveTabs();
+      }
+
+   }
+});
+
+chrome.tabs.onRemoved.addListener(function() {
+   doSaveTabs();
+});
+
+chrome.tabs.onReplaced.addListener(function() {
+   doSaveTabs();
+});
