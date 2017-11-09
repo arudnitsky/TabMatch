@@ -5,7 +5,8 @@
 - [ ] Marketing text for extension page in Chrome Store
 
 ### Tooling
-- [ ] Uninstall -g typescript tslint tslint-eslint-rules
+- [ ] Install Markdown all in One extension
+Uninstall -g typescript tslint tslint-eslint-rules
 - [ ] How to set up local settings for vscode and use tslint, etc. per project?
 
 ### Bugs
@@ -18,7 +19,9 @@
 - [ ] add "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false to mac settings
 - [x] Save and retrieve all settings from local storage
 
+
 ### VSCode settings
+```
 Windows:
 {
     "typescript.npm": "c:/program files/nodejs/npm.cmd",
@@ -31,5 +34,6 @@ Windows:
     "tslint.trace.server": "off",
     "tslint.jsEnable": true,
     "files.autoSave": "afterDelay",
-    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false
+    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+    "markdown.extension.preview.autoShowPreviewToSide": true
 }
