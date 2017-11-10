@@ -45,25 +45,25 @@ var findIdForTitle = function(bookmarks, titleToFind) {
    return idOfTitle;
 };
 
+var createParentAndSaveTabs = function(saveLocationParentId, folderTitle ) {
+   chrome.bookmarks.create(
+      {parentId: saveLocationParentId, title: folderTitle},
+      function(results) {
+         saveTabsToSaveLocation(results.id);
+      }
+   );
+};
+
 var doSaveTabs = function() {
    chrome.bookmarks.getTree(function(bookmarks) {
       var saveLocationParentId = findIdForTitle(bookmarks, saveLocationParentFolderTitle);
-      if (saveLocationParentId === notFoundId) {
-         alert('Can\'t find ', saveLocationFolderTitle);
-         return;
-      }
 
       var saveLocationId = findIdForTitle(bookmarks, saveLocationFolderTitle);
-      if (saveLocationId !== notFoundId) {
-         chrome.bookmarks.removeTree(saveLocationId);
+      if (saveLocationId === notFoundId) {
+         createParentAndSaveTabs(saveLocationParentId, saveLocationFolderTitle);
+      } else {
+         chrome.bookmarks.removeTree(saveLocationId, createParentAndSaveTabs(saveLocationParentId, saveLocationFolderTitle));
       }
-
-      chrome.bookmarks.create(
-         {parentId: saveLocationParentId, title: saveLocationFolderTitle},
-         function(results) {
-            saveTabsToSaveLocation(results.id);
-         }
-      );
    });
 };
 
