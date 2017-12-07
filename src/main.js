@@ -1,5 +1,7 @@
 'use strict';
 
+const saveIntervalTimerName = 'saveIntervalTimer';
+
 var sendSaveNowMessage = function() {
    chrome.runtime.sendMessage({message: 'saveNow'});
    window.close();
@@ -19,10 +21,11 @@ var enableTimerCheckboxClicked = function() {
    // if save folder is not set, then flash save folder, set enable timer to false and return
       settings.setEnableTimer(true);
       intervalContainer.style.display = 'inline-block';
-      chrome.alarms.create('saveIntervalTimer', {when: Date.now(), periodInMinutes: 5});
+      chrome.alarms.clear(saveIntervalTimerName);
+      chrome.alarms.create(saveIntervalTimerName, {when: Date.now(), periodInMinutes: settings.getSaveIntervalMinutes()});
    } else {
       settings.setEnableTimer(false);
-      chrome.alarms.clear('saveIntervalTimer');
+      chrome.alarms.clear(saveIntervalTimerName);
       intervalContainer.style.display = 'none';
    }
 };

@@ -11,15 +11,12 @@ Uninstall -g typescript tslint tslint-eslint-rules
 
 ### Bugs
 - [ ] Can enter or paste negative numbers in timer interval field
-- [ ] The timer is not changed when you change the save interval
-- [ ] Multiple save folders after time passes
 
 ### Next steps
 - [ ] Set a timer to not save until 5 minutes goes by. Then save immediately.
 - [ ] Split up tabs by window
 - [ ] if save folder is not set, then flash save folder, set enable timer to false and return
 - [ ] add "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false to mac settings
-- [x] Save and retrieve all settings from local storage
 
 
 ### VSCode settings
