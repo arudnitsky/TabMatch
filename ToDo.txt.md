@@ -14,6 +14,7 @@
 - [ ] Split up tabs by window
 - [ ] if save folder is not set, then flash save folder, set enable timer to false and return
 - [ ] add "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false to mac settings
+- [ ] Rename background.js to eventpage.js
 
 
 ### VSCode settings
