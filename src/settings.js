@@ -6,29 +6,30 @@ var settings = (function() {
 
    return {
       setSaveIntervalMinutes: function(interval) {
-         localStorage.saveIntervalMinutes = JSON.stringify(interval);
+         localStorage.setItem('saveIntervalMinutes', interval);
       },
 
       getSaveIntervalMinutes: function() {
-         var value = localStorage.saveIntervalMinutes ? localStorage.saveIntervalMinutes : saveIntervalDefault;
-         return JSON.parse(value);
+         var interval = localStorage.getItem('saveIntervalMinutes');
+         return JSON.parse(interval ? interval : saveIntervalDefault);
       },
 
       setSaveFolder: function(folder) {
-         localStorage.saveFolder = folder;
+         localStorage.setItem('saveFolder', folder);
       },
 
       getSaveFolder: function() {
-         return localStorage.saveFolder ? localStorage.saveFolder : saveFolderDefault;
+         var saveFolder = localStorage.getItem('saveFolder');
+         return saveFolder ? saveFolder : saveFolderDefault;
       },
 
       setEnableTimer: function(enable) {
-         localStorage.enableTimer = JSON.stringify(enable);
+         localStorage.setItem('enableTimer', JSON.stringify(enable));
       },
 
       getEnableTimer: function() {
-         value = localStorage.enableTimer ? localStorage.enableTimer : enableTimerDefault;
-         return JSON.parse(value);
+         var enableTimer = localStorage.getItem('enableTimer');
+         return JSON.parse(enableTimer ? enableTimer : enableTimerDefault);
       }
    };
 }());

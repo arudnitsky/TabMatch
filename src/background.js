@@ -1,7 +1,6 @@
 'use strict';
 
 const saveLocationParentFolderTitle = 'Other bookmarks';
-const saveLocationFolderTitle = 'TabMatch-Windows';
 const notFoundId = -1;
 
 var createBookmark = function(parentId, tab) {
@@ -55,14 +54,19 @@ var createParentAndSaveTabs = function(saveLocationParentId, folderTitle ) {
 };
 
 var doSaveTabs = function() {
+   var saveLocation = settings.getSaveFolder();
+   if (! saveLocation) {
+      return;
+   }
+
    chrome.bookmarks.getTree(function(bookmarks) {
       var saveLocationParentId = findIdForTitle(bookmarks, saveLocationParentFolderTitle);
 
-      var saveLocationId = findIdForTitle(bookmarks, saveLocationFolderTitle);
+      var saveLocationId = findIdForTitle(bookmarks, saveLocation);
       if (saveLocationId === notFoundId) {
-         createParentAndSaveTabs(saveLocationParentId, saveLocationFolderTitle);
+         createParentAndSaveTabs(saveLocationParentId, saveLocation);
       } else {
-         chrome.bookmarks.removeTree(saveLocationId, createParentAndSaveTabs(saveLocationParentId, saveLocationFolderTitle));
+         chrome.bookmarks.removeTree(saveLocationId, createParentAndSaveTabs(saveLocationParentId, saveLocation));
       }
    });
 };

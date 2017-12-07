@@ -1,12 +1,9 @@
 ### Think about it
-- [x] How to keep two browsers from stepping on each other's saved tabs?
-- [x] How to Split up tabs by window when saving
 - [ ] How to onboard new users on initial install to add dest folder, help text?
 - [ ] Marketing text for extension page in Chrome Store
 
 ### Tooling
-- [ ] Install Markdown all in One extension
-Uninstall -g typescript tslint tslint-eslint-rules
+- [ ] Uninstall -g typescript tslint tslint-eslint-rules
 - [ ] How to set up local settings for vscode and use tslint, etc. per project?
 
 ### Bugs
