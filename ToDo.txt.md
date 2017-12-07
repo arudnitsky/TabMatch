@@ -8,6 +8,7 @@
 
 ### Bugs
 - [ ] Can enter or paste negative numbers in timer interval field
+- [ ] Duplicated folder: reproduce by opening a new window, adding three tabs, then closing the window. Generates three extra folders.
 
 ### Next steps
 - [ ] Set a timer to not save until 5 minutes goes by. Then save immediately.
