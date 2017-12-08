@@ -14,6 +14,7 @@ var saveTabsToSaveLocation = function(saveLocationId) {
       windows.forEach(function(window) {
          window.tabs.forEach(function(tab) {
             createBookmark(saveLocationId, tab);
+            console.log('saveTabsToSaveLocation createBookmark');
          });
       });
    });
@@ -54,21 +55,29 @@ var createParentAndSaveTabs = function(saveLocationParentId, folderTitle ) {
 };
 
 var doSaveTabs = function() {
+   console.log('Entering doSaveTabs()');
    var saveLocation = settings.getSaveFolder();
    if (! saveLocation) {
       return;
    }
 
    chrome.bookmarks.getTree(function(bookmarks) {
+      console.log('Entering getTree callback');
       var saveLocationParentId = findIdForTitle(bookmarks, saveLocationParentFolderTitle);
+      if (saveLocationParentId === notFoundId) {
+         return;
+      }
 
       var saveLocationId = findIdForTitle(bookmarks, saveLocation);
-      if (saveLocationId === notFoundId) {
-         createParentAndSaveTabs(saveLocationParentId, saveLocation);
-      } else {
-         chrome.bookmarks.removeTree(saveLocationId, createParentAndSaveTabs(saveLocationParentId, saveLocation));
+      if (saveLocationId !== notFoundId) {
+         console.log('Trying to remove tree with id ' + saveLocationId)
+         chrome.bookmarks.removeTree(saveLocationId);
+         console.log('Removed tree');
       }
+      createParentAndSaveTabs(saveLocationParentId, saveLocation);
+      console.log('Exiting getTree callback');
    });
+   console.log('Exiting doSaveTabs()');
 };
 
 chrome.alarms.onAlarm.addListener(function() {
@@ -82,6 +91,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender) {
 });
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+   console.log('tabs.onUpdated ' + changeInfo.status);
    if (changeInfo.status === 'loading') {
       if (tab.url === undefined) {
          alert('Tab loading and url is undefined');
@@ -93,9 +103,12 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 });
 
 chrome.tabs.onRemoved.addListener(function() {
+   console.log('tabs.onRemoved');
    doSaveTabs();
 });
 
 chrome.tabs.onReplaced.addListener(function() {
+   console.log('tabs.onReplaced');
    doSaveTabs();
 });
+
