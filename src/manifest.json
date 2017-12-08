@@ -16,7 +16,7 @@
       "default_title": "TabMatch"
     },
     "background": {
-      "scripts": ["background.js", "settings.js"],
+      "scripts": ["eventpage.js", "settings.js"],
       "persistent": false
     },
     "permissions": [
